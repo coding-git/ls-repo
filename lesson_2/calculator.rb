@@ -3,10 +3,20 @@
 # calculate based on the user's input
 # display the result
 
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_messages.yml')
+LANGUAGE = 'en'
+
 ADD = "+"
 SUBTRACT = "-"
 MULTIPLY = "*"
 DIVIDE = "/"
+
+
+def internationalize(msg)
+  lang = LANGUAGE.nil? || LANGUAGE.empty? ? 'en' : LANGUAGE
+  MESSAGES[lang][msg]
+end
 
 def prompt(message)
   puts("=> #{message}")
@@ -14,24 +24,26 @@ end
 
 def validate_name(name)
   while name.empty?()
-    prompt "Please provide a valid name:"
+    prompt internationalize('valid_name')
     return gets.chomp
   end
   name
 end
 
 def validate_num(num)
-  unless num == "0" || (num.to_f != 0 && num != "0")
-    prompt "Please enter a valid number."
+  # option2: use /\d/.match(num) && /^\d*\.?\d*$/.match(num)
+  # option3: use Float(input) rescue false
+  until num == "0" || num.to_i.to_s == num || num.to_f.to_s == num
+    prompt internationalize('valid_num')
     num = gets.chomp
   end
   num
 end
 
 def validate_operator(operator)
-  # until %w(+ - * /).include?(entry)
-  until operator == ADD || SUBTRACT || MULTIPLY || DIVIDE
-    prompt "Invalid operator. Please enter +, -, *, or /:"
+  #until %w(+ - * /).include?(operator)
+  until [ADD, SUBTRACT, MULTIPLY, DIVIDE].include? operator
+    prompt internationalize('valid_operator')
     operator = gets.chomp
   end
   operator
@@ -50,24 +62,18 @@ def calculate(num1, num2, operator)
   end
 end
 
-prompt "Welcome to the calculator. Enter your name:"
+prompt internationalize('welcome')
 name = validate_name(gets.chomp)
-prompt("Hello #{name}!")
+prompt (internationalize('hello') + "#{name}")
 
 loop do
-  prompt "Enter the first number:"
+  prompt internationalize('first_num')
   num1 = validate_num(gets.chomp)
 
-  prompt "Enter the second number:"
+  prompt internationalize('second_num')
   num2 = validate_num(gets.chomp)
 
-  operator_prompt = <<-MSG
-    What operation would you like to perform? Please enter:
-      + for addition
-      - for subtraction
-      * for multiplication
-      / for division
-  MSG
+  operator_prompt = internationalize('operator_msg')
 
   prompt(operator_prompt)
   operator = validate_operator(gets.chomp)
@@ -75,9 +81,9 @@ loop do
   result = calculate(num1.to_f, num2.to_f, operator)
   prompt("(#{num1} #{operator} #{num2}) = #{result}")
 
-  prompt "Do you want to do another calculation?"
+  prompt internationalize('new_calculation')
   unless gets.downcase.start_with?('y')
-    prompt("Thank you for playing, #{name}.")
+    prompt (internationalize('thank_you') + "#{name}.")
     break
   end
 end
