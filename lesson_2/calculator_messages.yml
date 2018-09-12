@@ -1,0 +1,33 @@
+# calculator: config file
+
+en:
+  valid_name:  "Please provide a valid name:"
+  valid_num:  "Please enter a valid number:"
+  valid_operator:  "Invalid operator. Please enter +, -, *, or /:"
+  welcome:  "Welcome to the calculator. Enter your name:"
+  hello:  "Hello "
+  first_num:  "Enter the first number:"
+  second_num:  "Enter the second number:"
+  operator_msg: "What operation would you like to perform? Please enter:\n
+                   + for addition \n
+                   - for subtraction \n
+                   * for multiplication \n
+                   / for division"
+  new_calculation:  "Do you want to do another calculation? (y or n)"
+  thank_you:  "Thank you for playing, "
+
+jp:
+  hello:  "こんにちは"
+  valid_name:  "Please provide a valid name:"
+  valid_num:  "Please enter a valid number."
+  valid_operator:  "Invalid operator. Please enter +, -, *, or /:"
+  welcome:  "ようこそ。 名前を入力してください..."
+  first_num:  "Enter the first number:"
+  second_num:  "Enter the second number:"
+  operator_msg: "What operation would you like to perform? Please enter:\n
+                   + for addition \n
+                   - for subtraction \n
+                   * for multiplication \n
+                   / for division"
+  new_calculation:  "Do you want to do another calculation? (y or n)"
+  thank_you:  "Thank you for playing, "
