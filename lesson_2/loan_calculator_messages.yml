@@ -1,0 +1,11 @@
+
+welcome: "Welcome to the monthly mortgage calculator."
+loan_amount: "What is the loan amount?"
+valid_loan_amount: "The loan amount is invalid. Please enter the loan amount in positive number format only:"
+apr: "What is the annual percentage rate (APR) (e.g. enter 5 or 5% for a 5% annual interest rate)?"
+valid_apr: "Please re-enter the APR in positive number format (e.g. enter 5 or 5% for a 5% annual interest rate):"
+loan_duration: "What is the loan duration in months?"
+valid_duration: "Please enter the loan duration in positive number format only:"
+monthly_mortgage: "The monthly mortgage amount is $"
+continue: "Would you like to do another calculation? (y or n)"
+thanks: "Thank you for using the monthly mortgage calculator. See you next time!"
